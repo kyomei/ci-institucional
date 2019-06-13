@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0052)https://getbootstrap.com/docs/4.0/examples/carousel/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Site desenvolvimento em codeigniter para estudos">
-    <meta name="author" content="Rafael Jeferson">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Site Institucional</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="<?=base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="<?=base_url('assets/css/carousel.css" rel="stylesheet');?>">
-  </head>
-  <body cz-shortcut-listen="true">
-
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <?php $this->load->view('commons/menu.php'); ?>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    </header>
-
-    <main role="main">
+<?php $this->load->view('commons/header'); ?>
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -157,22 +122,4 @@
 
       </div><!-- /.container -->
 
-
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="<?=base_url('#');?>">Back to top</a></p>
-        <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-      </footer>
-    </main>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?=base_url('assets/js/jquery-3.2.1.slim.min.js');?>" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="<?=base_url('assets/js/popper.min.js');?>"></script>
-    <script src="<?=base_url('assets/js/bootstrap.min.js');?>"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="<?=base_url('assets/js/holder.min.js');?>"></script>
-  
-
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg></body></html>
+<?php $this->load->view('commons/footer'); ?>

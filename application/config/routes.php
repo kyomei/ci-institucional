@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['empresa'] = "Institucional/Empresa";
 $route['servicos'] = "Institucional/Servicos";
+$route['trabalhe-conosco'] = "Contato/TrabalheConosco";
+$route['fale-conosco'] = "Contato/FaleConosco";

@@ -14,7 +14,7 @@ class Institucional extends CI_Controller {
 		$this->load->view('empresa');
 	}
 
-	public function Servicoes()
+	public function Servicos()
 	{
 		$this->load->view('servicos');
 	}

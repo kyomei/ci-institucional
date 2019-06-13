@@ -41,7 +41,10 @@
             	<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
             	<p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
           	</div><!-- /.col-lg-4 -->
-        </div>
+		</div>
+		<pre>
+			<?php // print_r($this->router);?>
+		</pre>
 	</div>
 
 <?php $this->load->view('commons/footer.php');?>

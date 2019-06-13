@@ -11,8 +11,7 @@ class Institucional extends CI_Controller {
 
 	public function Empresa()
 	{
-		echo "ola";
-		//$this->load->view('empresa');
+		$this->load->view('empresa');
 	}
 
 	public function Servicoes()

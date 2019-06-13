@@ -3,11 +3,11 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Site desenvolvimento em codeigniter para estudos">
+    <meta name="description" content="<?=$description?>">
     <meta name="author" content="Rafael Jeferson">
     <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title><?=title;?>Site Institucional</title>
+    <title><?=$title?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">

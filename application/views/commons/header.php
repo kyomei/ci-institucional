@@ -7,7 +7,7 @@
     <meta name="author" content="Rafael Jeferson">
     <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Site Institucional</title>
+    <title><?=title;?>Site Institucional</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">

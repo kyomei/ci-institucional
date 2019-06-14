@@ -10,6 +10,6 @@ Instalação
 ************
 Clone o projeto e rode
 
-```sh
+``
 git clone https://github.com/kyomei/ci-institucional.git
-```
+``

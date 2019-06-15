@@ -31,7 +31,7 @@ class Contato extends CI_Controller {
 			$formData = $this->input->post();
 			// Monta a mensagem
 			$msg = " <span style='font-size:18px'><p><strong>Você tem uma nova mensagem:</strong><br />";
-			$msg .= "Via: <u>".$_SERVER["REQUEST_URI"]."</u></p>";
+			$msg .= "Via: <u>https://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]."</u></p>";
 			$msg .= "<p><strong>Detalhes da Mensagem:</strong></p>";
 			$msg .= "<p><strong>Nome</strong> ".$formData['nome']."<br />";
 			$msg .= "<strong>Email</strong> ".$formData['email']."<br />";
@@ -40,7 +40,7 @@ class Contato extends CI_Controller {
 			$msg .= "<p><strong>Enviado em:</strong> ".date("d/m/Y")."</p>";
 			$msg .= "<p>Obrigado!</p></span>";
 			// Envia email para visitante e para o email do site
-			$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], "Mensagem recebindo, em breve um de nossos representantes entrará em contato");
+			$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], "Recebemos sua mensagem, em breve um de nossos representantes entrará em contato");
 			$emailStatusToAdmin = $this->SendEmail("site@ieatprofissionalizante.com.br", "Fale conosco - Instituto","teste@ieatprofissionalizante.com.br" , "Fale conosco - ".$formData['nome'], "Nova mensagem através do seu site", $msg);
 			
 			// Verifica se foi enviado

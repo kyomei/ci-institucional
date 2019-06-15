@@ -30,8 +30,6 @@ class Contato extends CI_Controller {
 		} else {
 			$formData = $this->input->post();
 			// Monta a mensagem
-			$dataArray = explode("/", date("d/m/Y"));
-			$dataAtual = $dataArray[0] . " de " . $this->mesAtual($dataArray[1]) . ", " . $dataArray[2];
 			$msg = " <span style='font-size:18px'><p><strong>Você tem uma nova mensagem:</strong><br />";
 			$msg .= "Via: <u>".$_SERVER["REQUEST_URI"]."</u></p>";
 			$msg .= "<p><strong>Detalhes da Mensagem:</strong></p>";
@@ -39,7 +37,7 @@ class Contato extends CI_Controller {
 			$msg .= "<strong>Email</strong> ".$formData['email']."<br />";
 			$msg .= "<strong>Assunto</strong> ".$formData['assunto']."<br />";
 			$msg .= "<strong>Mensagem</strong> ".$formData['mensagem']."</p>";
-			$msg .= "<p><strong>Enviado em:</strong> $dataAtual</p>";
+			$msg .= "<p><strong>Enviado em:</strong> ".date("d/m/Y")."</p>";
 			$msg .= "<p>Obrigado!</p></span>";
 			// Envia email para visitante e para o email do site
 			$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], "Mensagem recebindo, em breve um de nossos representantes entrará em contato");

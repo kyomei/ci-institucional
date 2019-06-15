@@ -1,7 +1,7 @@
 <?php $this->load->view('commons/header.php');?>
 	<div class="container my-5">
 		<div class="page-header">
-			<h1>Fale conosco</>
+			<h1>Fale conosco</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-8">

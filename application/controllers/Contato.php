@@ -36,7 +36,7 @@ class Contato extends CI_Controller {
 				$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');	
 				$data['formErrors'] = null;		
 			} else {
-				$data['formErros'] = "Desculpe! Não foi possível enviar o seu contato, tente novamente mais tarde.";
+				$data['formErrors'] = "<strong>Desculpe!</strong> Não foi possível enviar o seu contato, tente novamente mais tarde.";
 			}
 		}
 		
@@ -58,9 +58,9 @@ class Contato extends CI_Controller {
 		$config['wordwrap'] = TRUE;
 		$config['mailtype'] = 'html';
 		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'smtp.seudominio.com.br';
-		$config['smtp_user'] = 'user@seudominio.com.br';
-		$config['smtp_pass'] = 'suasenha';
+		$config['smtp_host'] = 'smtp.ieatprofissionalizante.com.br';
+		$config['smtp_user'] = 'teste@ieatprofissionalizante.com.br';
+		$config['smtp_pass'] = 'teste123';
 		$config['newline'] = '\r\n';
 
 		$this->email->initialize($config);

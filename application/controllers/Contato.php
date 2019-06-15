@@ -76,6 +76,9 @@ class Contato extends CI_Controller {
 			if($uploadCurriculo['error']) {
 				$data['formErrors'] = $uploadCurriculo['message'];
 			} else {
+				// Envia email para visitante e para o email do site
+				$formData = $this->input->post();
+				
 				// Monta a mensagem
 				$msg = " <span style='font-size:18px'><p><strong>Você tem uma nova mensagem:</strong><br />";
 				$msg .= "Via: <u>".base_url($_SERVER['REQUEST_URI'])."</u></p>";
@@ -88,8 +91,6 @@ class Contato extends CI_Controller {
 				$msg .= "<p><strong>Enviado em:</strong> ".date("d/m/Y")."</p>";
 				$msg .= "<p>Obrigado!</p></span>";
 
-				// Envia email para visitante e para o email do site
-				$formData = $this->input->post();
 				$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional - Currículo Recebido", $formData['email'], $formData['nome'], $formData['assunto'], "Recebemos seu currículo, ele está sendo armazenado em nossa base de dados");
 				$emailStatusToAdmin = $this->SendEmail("site@ieatprofissionalizante.com.br", "Trabalhe conosco - Instituto","teste@ieatprofissionalizante.com.br" , "Trabalhe conosco novo currículo de ".$formData['nome'], "Nova mensagem através do seu site", $msg, $formData['email'], $formData['nome'], $uploadCurriculo['fileData']['full_path']);
 				

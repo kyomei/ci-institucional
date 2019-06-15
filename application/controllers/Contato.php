@@ -29,10 +29,24 @@ class Contato extends CI_Controller {
 			$data['formErrors'] = validation_errors('<li>', '</li>');	
 		} else {
 			$formData = $this->input->post();
-			$emailStatus = $this->SendEmailToAdmin("teste@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], $formData['mensagem'], 'teste@ieatprofissionalizante.com.br', 'Site página Fale Conosco');
+			// Monta a mensagem
+			$dataArray = explode("/", date("d/m/Y"));
+			$dataAtual = $dataArray[0] . " de " . $this->mesAtual($dataArray[1]) . ", " . $dataArray[2];
+			$msg = " <span style='font-size:18px'><p><strong>Você tem uma nova mensagem:</strong><br />";
+			$msg .= "Via: <u>".$_SERVER["REQUEST_URI"]."</u></p>";
+			$msg .= "<p><strong>Detalhes da Mensagem:</strong></p>";
+			$msg .= "<p><strong>Nome</strong> ".$formData['nome']."<br />";
+			$msg .= "<strong>Email</strong> ".$formData['email']."<br />";
+			$msg .= "<strong>Assunto</strong> ".$formData['assunto']."<br />";
+			$msg .= "<strong>Mensagem</strong> ".$formData['mensagem']."</p>";
+			$msg .= "<p><strong>Enviado em:</strong> $dataAtual</p>";
+			$msg .= "<p>Obrigado!</p></span>";
+			// Envia email para visitante e para o email do site
+			$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], "Mensagem recebindo, em breve um de nossos representantes entrará em contato");
+			$emailStatusToAdmin = $this->SendEmail("site@ieatprofissionalizante.com.br", "Fale conosco - Instituto","teste@ieatprofissionalizante.com.br" , "Fale conosco - ".$formData['nome'], "Nova mensagem através do seu site", $msg);
 			
 			// Verifica se foi enviado
-			if($emailStatus) {
+			if(($emailStatusToVisitante) && ($emailStatusToAdmin)) {
 				$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');	
 				$data['formErrors'] = null;		
 			} else {
@@ -50,7 +64,7 @@ class Contato extends CI_Controller {
 		$this->load->view('trabalhe-conosco', $data);
 	}
 
-	private function SendEmailToAdmin($from, $fromName, $to, $toName, $subject, $message, $reply = null, $replyName = null) 
+	private function SendEmail($from, $fromName, $to, $toName, $subject, $message)
 	{
 		$this->load->library('email');
 
@@ -78,7 +92,5 @@ class Contato extends CI_Controller {
 			return true;
 		else
 			return false;
-			
 	}
-
 }

@@ -31,7 +31,7 @@ class Contato extends CI_Controller {
 			$formData = $this->input->post();
 			// Monta a mensagem
 			$msg = " <span style='font-size:18px'><p><strong>Você tem uma nova mensagem:</strong><br />";
-			$msg .= "Via: <u>https://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]."</u></p>";
+			$msg .= "Via: <u>".base_url($_SERVER['REQUEST_URI'])."</u></p>";
 			$msg .= "<p><strong>Detalhes da Mensagem:</strong></p>";
 			$msg .= "<p><strong>Nome</strong> ".$formData['nome']."<br />";
 			$msg .= "<strong>Email</strong> ".$formData['email']."<br />";

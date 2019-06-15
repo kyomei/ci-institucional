@@ -29,7 +29,7 @@ class Contato extends CI_Controller {
 			$data['formErrors'] = validation_errors('<li>', '</li>');	
 		} else {
 			$formData = $this->input->post();
-			$emailStatus = $this->SendEmailToAdmin($formData['email'], $formData['nome'],"rafa.jefer@gmail.com", "To Name", $formData['assunto'], $formData['mensagem'], $formData['email'], $formData['nome']);
+			$emailStatus = $this->SendEmailToAdmin("teste@ieatprofissionalizante.com.br", "LCI Institucional", $formData['email'], $formData['nome'], $formData['assunto'], $formData['mensagem'], 'teste@ieatprofissionalizante.com.br', 'Site página Fale Conosco');
 			
 			// Verifica se foi enviado
 			if($emailStatus) {

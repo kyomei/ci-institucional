@@ -63,8 +63,8 @@ class Contato extends CI_Controller {
 		// Regras de validação
 		$this->form_validation->set_rules('nome', 'Nome', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		$this->form_validation->set_rules('assunto', 'Assunto', 'trim|required|min_length[5]');
-		$this->form_validation->set_rules('mensagem', 'Mensagem', 'trim|required|min_length[30]');
+		$this->form_validation->set_rules('telefone', 'telefone', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('mensagem', 'Mensagem', 'trim|required|min_length[10]');
 		
 		// Verifica se houve errors, e exibe em forma de lista não ordenada
 		if($this->form_validation->run() == FALSE) {

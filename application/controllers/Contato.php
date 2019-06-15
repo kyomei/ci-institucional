@@ -80,9 +80,6 @@ class Contato extends CI_Controller {
 		$this->email->from($from, $fromName);
 		$this->email->to($to, $toName);
 
-		if($reply)
-			$this->email->reply_to($reply, $replyName);
-
 		$this->email->subject($subject);
 		$this->email->message($message);
 

@@ -33,11 +33,11 @@ class Contato extends CI_Controller {
 			
 			// Verifica se foi enviado
 			if($emailStatus) {
-				$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');			
+				$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');	
+				$data['formErrors'] = null;		
 			} else {
 				$data['formErros'] = "Desculpe! Não foi possível enviar o seu contato, tente novamente mais tarde.";
 			}
-			//$data['formErrors'] = null;
 		}
 		
 		$this->load->view('fale-conosco', $data);

@@ -5,28 +5,49 @@
 		</div>
 		<div class="row">
 			<div class="col-md-8">
+				
+				<!-- Start .\ Mensagem de validação do formulário  -->
+				<?php if($formErrors): ?>
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<ul>
+							<?=$formErrors?>
+						</ul>
+					</div>
+				<?php else: 
+						if($this->session->flashdata('success_msg')){
+							
+						?>
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Sucesso!</strong> <?=$this->session->flashdata('success_msg') ?>
+					</div>
+							<?php } ?>
+				<?php endif; ?>				
+				<!-- End .\ Mensagem de validação do formulário  -->
+
 				<!-- Start .\ Formulário de contato -->
-				<form>
+				<form method="POST">
 					<div class="form-group">
 						<label for="nome">Nome</label>
-						<input type="email" class="form-control" id="nome" placeholder="Nome">
+						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value="<?php echo $formErrors ? set_value('nome') : null; ?>">
 					</div>
 					<div class="form-group">
 						<label for="email">Email address</label>
-						<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+						<input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email" value="<?php echo $formErrors ? set_value('email') : null; ?>">
 						<small id="emailHelp" class="form-text text-muted">Ex.: email@example.com</small>
 					</div>
 					<div class="form-group">
 						<label for="assunto">Assunto</label>
-						<input type="text" class="form-control" id="assunto" placeholder="Assunto">
+						<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto" value="<?php echo $formErrors ? set_value('assunto') : null; ?>">
 					</div>
 					<div class="form-group">
 						<label for="mensagem">Mensagem</label>
-						<textarea class="form-control" id="mensagem" name="mensagem" rows="8"></textarea>
+						<textarea class="form-control" id="mensagem" name="mensagem" rows="8"><?php echo $formErrors ? set_value('mensagem') : null; ?></textarea>
 					</div>
 					<button type="submit" class="btn btn-dark">Enviar</button>
 				</form>
-				<!-- End .\ Informaçoes de contato -->
+				<!-- End .\ Formulário de contato -->
 			</div>
 			<div class="col-md-4">
 				<!-- Start .\ Informaçoes de contato -->

@@ -64,6 +64,7 @@ class Contato extends CI_Controller {
 		$config['newline'] = '\r\n';
 
 		$this->email->initialize($config);
+		/*
 		$this->email->from($from, $fromName);
 		$this->email->to($to, $toName);
 
@@ -77,6 +78,17 @@ class Contato extends CI_Controller {
 			return true;
 		else
 			return false;
+			*/
+
+			$this->email->from('rafa.jefer@gmail.com', 'Your Name');
+			$this->email->to('rafa.jefer@gmail.com');
+			$this->email->cc('rafa.jefer@gmail.com');
+			$this->email->bcc('rafa.jefer@gmail.com');
+
+			$this->email->subject('Email Test');
+			$this->email->message('Testing the email class.');
+
+			$this->email->send();
 	}
 
 }

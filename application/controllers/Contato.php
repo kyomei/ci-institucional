@@ -140,10 +140,10 @@ class Contato extends CI_Controller {
 	{
 		$this->load->library('upload');
 
-		$path = base_url("uploads/curriculos");
+		$path = "./uploads/curriculos";
 
 		// Define as configurações do arquivo
-		$config['upload_path'] = "./uploads/curriculos";;
+		$config['upload_path'] = $path;
 		$config['allowed_types'] = 'doc|docx|pdf|zip|rar';
 		$config['max_size'] = '5120';
 		$config['encrypt_name'] = TRUE;

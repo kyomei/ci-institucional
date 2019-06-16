@@ -140,7 +140,7 @@ class Contato extends CI_Controller {
 	{
 		$this->load->library('upload');
 
-		$path ="../curriculos";
+		$path = base_url("uploads/curriculos");
 
 		// Define as configurações do arquivo
 		$config['upload_path'] = $path;

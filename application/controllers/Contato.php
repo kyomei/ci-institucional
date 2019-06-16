@@ -96,6 +96,7 @@ class Contato extends CI_Controller {
 				
 				if(($emailStatusToVisitante) && ($emailStatusToAdmin)) {
 					$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');
+					$data['formErrors'] = null;	
 				} else {
 					$data['formErrors'] = "Desculpe! Não foi possível enviar o seu contato. tente novamente mais tarde.";
 				}

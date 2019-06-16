@@ -85,14 +85,14 @@ class Contato extends CI_Controller {
 				$msg .= "<p><strong>Detalhes da Mensagem:</strong></p>";
 				$msg .= "<p><strong>Nome</strong> ".$formData['nome']."<br />";
 				$msg .= "<strong>Email</strong> ".$formData['email']."<br />";
-				$msg .= "<strong>Assunto</strong> ".$formData['assunto']."<br />";
+				$msg .= "<strong>Assunto</strong> Currículo<br />";
 				$msg .= "<strong>Mensagem</strong> ".$formData['mensagem']."</p>";
 				$msg .= "<strong>Curricu</strong>";
 				$msg .= "<p><strong>Enviado em:</strong> ".date("d/m/Y")."</p>";
 				$msg .= "<p>Obrigado!</p></span>";
 
-				$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional - Currículo Recebido", $formData['email'], $formData['nome'], $formData['assunto'], "Recebemos seu currículo, ele está sendo armazenado em nossa base de dados");
-				$emailStatusToAdmin = $this->SendEmail("site@ieatprofissionalizante.com.br", "Trabalhe conosco - Instituto","teste@ieatprofissionalizante.com.br" , "Trabalhe conosco novo currículo de ".$formData['nome'], "Nova mensagem através do seu site", $msg, $formData['email'], $formData['nome'], $uploadCurriculo['fileData']['full_path']);
+				$emailStatusToVisitante = $this->SendEmail("site@ieatprofissionalizante.com.br", "LCI Institucional - Currículo Recebido", $formData['email'], $formData['nome'], "LCI Institucional - Currículo enviado", "Recebemos seu currículo, ele está sendo armazenado em nossa base de dados");
+				$emailStatusToAdmin = $this->SendEmail("site@ieatprofissionalizante.com.br", "Trabalhe conosco - Instituto","teste@ieatprofissionalizante.com.br" , "Trabalhe conosco novo currículo de ".$formData['nome'], "Nova mensagem através do seu site", $msg, $uploadCurriculo['fileData']['full_path']);
 				
 				if(($emailStatusToVisitante) && ($emailStatusToAdmin)) {
 					$this->session->set_flashdata('success_msg', 'Contato recebido com sucesso!');

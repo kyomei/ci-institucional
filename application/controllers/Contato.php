@@ -10,6 +10,7 @@ class Contato extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->helper('form');
+		$this->load->helper('captcha');
 		// Configuração cache global na classe, ou seja para todos os métodos que possuem views como saída
 		//$this->output->cache(1440); // Corresponde a 24 hrs até o cache ser atualizado
 	}
@@ -23,6 +24,7 @@ class Contato extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', array('required' => 'Você deve preencher a %s.'));
 		$this->form_validation->set_rules('assunto', 'Assunto', 'trim|required|min_length[5]', array('required' => 'Você deve preencher a %s.'));
 		$this->form_validation->set_rules('mensagem', 'Mensagem', 'trim|required|min_length[5]', array('required' => 'Você deve preencher a %s.'));
+		$this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|callback_captcha_check');
 
 		// Verifica se houve errors, e exibe em forma de lista não ordenada
 		if($this->form_validation->run() == FALSE) {
@@ -52,6 +54,7 @@ class Contato extends CI_Controller {
 			}
 		}
 		
+		$data['captcha_image'] = $this->GenCaptcha();
 		$this->load->view('fale-conosco', $data);
 	}
 
@@ -68,7 +71,8 @@ class Contato extends CI_Controller {
 		
 		// Verifica se houve errors, e exibe em forma de lista não ordenada
 		if($this->form_validation->run() == FALSE) {
-			$data['formErrors'] = validation_errors('<li>', '</li>');
+			//$data['formErrors'] = validation_errors('<li>', '</li>');
+			$data['formErrors'] = form_error();
 		} else {
 			$uploadCurriculo = $this->UploadFile('curriculo');
 
@@ -164,5 +168,32 @@ class Contato extends CI_Controller {
 			$data['fileData'] = $this->upload->data();
 		}
 		return $data;
+	}
+
+	private function GenCaptcha()
+	{
+		$path = './captcha';
+
+		// Se não existir diretório crie
+		if(!is_dir($path))
+			mkdir($path, 0777, $recursive = true);
+
+		$vals = array('img_path' => './captcha/', 'img_url' => base_url('captcha'));
+		$cap = create_captcha($vals);
+
+		// Valor CAPTCHA digitado pelo usuário será guardado na sessão
+		$this->session->set_userdata('user_captcha_value', $cap['word']);
+
+		return $cap['image'];
+	}
+
+	public function captcha_check($str)
+	{		
+		if ($str == $this->session->userdata('user_captcha_value')) {
+			return true;
+		} else {
+			$this->form_validation->set_message('captcha_check', 'O texto informado está incorreto.');
+			return FALSE;
+		}
 	}
 }

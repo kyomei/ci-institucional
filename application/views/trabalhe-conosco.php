@@ -2,6 +2,7 @@
 	<div class="container my-5">
 		<div class="page-header">
 			<h1>Trabalhe conosco</h1>
+			<?php print_r($formErrors); echo form_error('email');?>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
@@ -30,7 +31,8 @@
 				<?= form_open_multipart(base_url('trabalhe-conosco'), array("method"=>"POST")); ?>
 					<div class="form-group">
 						<label for="nome">Nome</label>
-						<?= form_input(array("name"=>"nome","id"=>"nome"),set_value('nome'),  array("class"=>"form-control","required"=>"", "type"=>"text", "placeholder"=>"Nome"));?>
+						<?= form_input(array("name"=>"nome","id"=>"nome"),set_value('nome'),  array("class"=>"form-control  is-invalid","required"=>"", "type"=>"text", "placeholder"=>"Nome"));?>
+						<div class="invalid-feedback">Por favor, escolha um nome de usuário.</div>
 					</div>
 					<div class="form-group">
 						<label for="email">Email address</label>

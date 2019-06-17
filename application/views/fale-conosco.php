@@ -45,6 +45,13 @@
 						<label for="mensagem">Mensagem</label>
 						<textarea class="form-control" id="mensagem" name="mensagem" rows="8"><?php echo $formErrors ? set_value('mensagem') : null; ?></textarea>
 					</div>
+					<div class="form-group">
+						<label for="captcha">Captcha - <?php print_r($this->session->userdata()); ?></label>
+						<div class="d-flex">
+							<?=$captcha_image?>
+							<input id="captcha" name="captcha" placeholder="Captcha" class="form-control ml-2" type="text" value="">
+						</div>
+					</div>
 					<button type="submit" class="btn btn-dark">Enviar</button>
 				</form>
 				<!-- End .\ Formulário de contato -->
